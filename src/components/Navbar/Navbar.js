@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
@@ -34,7 +33,11 @@ function Navbar() {
       <div className="profile-img-wrapper">
         {user && (
           <Link to="/profile">
-            <img className="profile-img" src={user.image} alt="profile" />
+            <img
+              className="profile-img"
+              src={user.profilePicture}
+              alt="profile"
+            />
           </Link>
         )}
       </div>

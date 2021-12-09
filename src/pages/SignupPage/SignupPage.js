@@ -1,38 +1,51 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import genres from "../../genres";
 
 import authService from "../../services/auth.service";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+  const [favoriteGenres, setFavoriteGenres] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleUsername = (e) => setUsername(e.target.value);
+  const handleProfilePicture = (e) => setProfilePicture(e.target.value);
+  const handleFavoriteGenres = (e) => {
+    var options = e.target.options;
+    var value = [];
+    for (var i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    console.log(value);
+    setFavoriteGenres(value);
+  };
 
   const handleSignupSubmit = async (e) => {
     try {
       e.preventDefault();
       // Create an object representing the request body
-      const requestBody = { email, password, name };
+      // Add profile picture with the cloudinary setup
+      const requestBody = {
+        email,
+        password,
+        username,
+        profilePicture,
+        favoriteGenres,
+      };
 
-      const authToken = localStorage.getItem('authToken');
-      await axios.post(
-        'http://localhost:5005/auth/signup',
-        requestBody,
-        { headers: { Authorization: `Bearer ${authToken}`} }
-      )
+      // Request to api with service
+      await authService.signup(requestBody);
 
-      // or with a service
-      // await authService.signup(requestBody);
-
-      
       // If the request is successful navigate to login page
       navigate("/login");
     } catch (error) {
@@ -46,6 +59,14 @@ function SignupPage(props) {
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
+        <label>Username:</label>
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleUsername}
+        />
+
         <label>Email:</label>
         <input type="text" name="email" value={email} onChange={handleEmail} />
 
@@ -57,8 +78,26 @@ function SignupPage(props) {
           onChange={handlePassword}
         />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+        <label>Profile Picture</label>
+        {/* Has to be changed for type file with cloudinary */}
+        <input
+          type="text"
+          name="profilePicture"
+          value={profilePicture}
+          onChange={handleProfilePicture}
+        />
+
+        <label>What are your favorite book genres?</label>
+        <select
+          name=""
+          value={favoriteGenres}
+          onChange={handleFavoriteGenres}
+          multiple
+        >
+          {genres.map((oneGenre) => {
+            return <option value={oneGenre}>{oneGenre}</option>;
+          })}
+        </select>
 
         <button type="submit">Sign Up</button>
       </form>
