@@ -2,3 +2,9 @@
   background-color: #453d83;
   padding: 1em;
 }
+
+.brand-custom span {
+  font-family: "Cinzel Decorative", cursive;
+  color: white;
+  font-size: 1.5em;
+}

@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import genres from "../../genres";
 
 import authService from "../../services/auth.service";
+import fileService from "../../services/fileupload.service";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [allowSubmit, setAllowSubmit] = useState(false);
   const [favoriteGenres, setFavoriteGenres] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -17,7 +19,22 @@ function SignupPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleUsername = (e) => setUsername(e.target.value);
-  const handleProfilePicture = (e) => setProfilePicture(e.target.value);
+  const handleFileUpload = async (e) => {
+    try {
+      const uploadData = new FormData();
+
+      uploadData.append("imageUrl", e.target.files[0]); // <-- set the file in the form
+
+      const response = await fileService.uploadImage(uploadData);
+
+      setImageUrl(response.data.secure_url);
+      setAllowSubmit(true);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("Failed to upload the file");
+    }
+  };
+
   const handleFavoriteGenres = (e) => {
     var options = e.target.options;
     var value = [];
@@ -39,7 +56,7 @@ function SignupPage(props) {
         email,
         password,
         username,
-        profilePicture,
+        imageUrl,
         favoriteGenres,
       };
 
@@ -50,7 +67,7 @@ function SignupPage(props) {
       navigate("/login");
     } catch (error) {
       // If the request resolves with an error, set the error message in the state
-      setErrorMessage("Something went wrong");
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -79,13 +96,7 @@ function SignupPage(props) {
         />
 
         <label>Profile Picture</label>
-        {/* Has to be changed for type file with cloudinary */}
-        <input
-          type="text"
-          name="profilePicture"
-          value={profilePicture}
-          onChange={handleProfilePicture}
-        />
+        <input type="file" onChange={handleFileUpload} />
 
         <label>What are your favorite book genres?</label>
         <select
@@ -99,7 +110,9 @@ function SignupPage(props) {
           })}
         </select>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={!allowSubmit}>
+          Sign Up
+        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

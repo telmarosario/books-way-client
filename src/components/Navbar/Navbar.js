@@ -6,12 +6,12 @@ import "./Navbar.css";
 
 function Navbar() {
   // Get the value from the context
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom">
+    <nav className="navbar navbar-expand-lg navbar-light navbar-custom">
       <div className="container-fluid">
-        <Link class="navbar-brand" to="/">
+        <Link class="navbar-brand brand-custom" to="/">
           <img
             src={logoImage}
             alt=""
@@ -19,7 +19,7 @@ function Navbar() {
             height="80"
             class="d-inline-block align-text-top"
           />
-          BooksWay
+          <span>BooksWay</span>
         </Link>
         <button
           className="navbar-toggler"
@@ -35,18 +35,18 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             {isLoggedIn && (
-              <div className="nav-link">
-                <button onClick={logOutUser}>Logout</button>
-              </div>
+              <Link to="/books/add-book" className="nav-link">
+                Add Book
+              </Link>
             )}
             {!isLoggedIn && (
               <>
                 <Link to="/signup" className="nav-link">
-                  <button>Sign Up</button>
+                  Sign up
                 </Link>
 
                 <Link to="/login" className="nav-link">
-                  <button>Login</button>
+                  Login
                 </Link>
               </>
             )}
@@ -55,7 +55,7 @@ function Navbar() {
                 <Link to="/profile">
                   <img
                     className="profile-img"
-                    src={user.profilePicture}
+                    src={user.imageUrl}
                     alt="profile"
                   />
                 </Link>

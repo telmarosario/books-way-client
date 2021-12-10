@@ -9,31 +9,9 @@ a {
   color: black;
 }
 
-button,
-select {
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-  height: 40px;
-}
-
 label {
   width: 200px;
   display: block;
-}
-
-input,
-textarea {
-  width: 200px;
-  padding: 10px;
-  display: inline-block;
-  margin: 10px;
-}
-
-select {
-  width: 300px;
-  height: 100px;
 }
 
 .card {
