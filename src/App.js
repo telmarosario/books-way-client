@@ -9,6 +9,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import AddBook from "./pages/AddBook/AddBook";
+import BookDetails from "./pages/BookDetails/BookDetails";
+import OtherUser from "./pages/OtherUser/OtherUser";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -25,17 +27,34 @@ function App() {
           path="/profile"
           element={
             <IsPrivate>
-              {" "}
-              <ProfilePage />{" "}
+              <ProfilePage />
             </IsPrivate>
           }
         />
+
         <Route
           path="/books/add-book"
           element={
             <IsPrivate>
-              {" "}
-              <AddBook />{" "}
+              <AddBook />
+            </IsPrivate>
+          }
+        ></Route>
+
+        <Route
+          path="/books/:bookId"
+          element={
+            <IsPrivate>
+              <BookDetails />
+            </IsPrivate>
+          }
+        ></Route>
+
+        <Route
+          path="/user/:userId"
+          element={
+            <IsPrivate>
+              <OtherUser />
             </IsPrivate>
           }
         ></Route>
@@ -44,8 +63,7 @@ function App() {
           path="/signup"
           element={
             <IsAnon>
-              {" "}
-              <SignupPage />{" "}
+              <SignupPage />
             </IsAnon>
           }
         />
@@ -53,8 +71,7 @@ function App() {
           path="/login"
           element={
             <IsAnon>
-              {" "}
-              <LoginPage />{" "}
+              <LoginPage />
             </IsAnon>
           }
         />
