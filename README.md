@@ -43,7 +43,7 @@ BooksWay is a web app to sell and trade books
 | ` /user/:userId`       | OtherUser       | authenticated user only `<IsPrivate> ` | Other users' profiles.                                |
 | `/books/:bookId`       | BookDetails     | authenticated user only `<IsPrivate> ` | Book details for specific user                        |
 | ` /books/add-book`     | AddBook         | authenticated user only `<IsPrivate> ` | Form to create a new book                             |
-| ` /books/edit-book`    | EditBook        | authenticated user only `<IsPrivate> ` | Form to edit a new book                               |
+| ` /books/edit/:bookId` | EditBook        | authenticated user only `<IsPrivate> ` | Form to edit a new book                               |
 | `/user-profiles/saved` | SavedBooks      | authenticated user only `<IsPrivate>`  | Current user saved books                              |
 
 ## Components

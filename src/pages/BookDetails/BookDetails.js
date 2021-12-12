@@ -1,8 +1,10 @@
 import BookService from "../../services/book.service";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+import { AuthContext } from "./../../context/auth.context";
 
 function BookDetails() {
+  const { user } = useContext(AuthContext);
   const [book, setBook] = useState(null);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -38,6 +40,13 @@ function BookDetails() {
           <Link to={`/user/${book.userOwner._id}`}>
             {book.userOwner.username}
           </Link>
+          {user._id === book.userOwner._id ? (
+            <Link to={`/books/edit/${book._id}`}>
+              <button>Edit</button>
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>
