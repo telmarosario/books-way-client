@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import userService from "../../services/user.service";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
