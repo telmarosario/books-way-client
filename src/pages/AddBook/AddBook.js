@@ -8,7 +8,7 @@ function AddBook() {
   const [isOnSale, setIsOnSale] = useState(false);
   const [title, setTitle] = useState("");
   const [condition, setCondition] = useState("");
-  const [saleOption, setSaleOption] = useState("trade");
+  const [saleOption, setSaleOption] = useState("Trade");
   const [price, setPrice] = useState(0);
   const [bookGenre, setBookGenre] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
@@ -103,8 +103,8 @@ function AddBook() {
                   onChange={handleOptions}
                   value={saleOption}
                 >
-                  <option value="trade">Trade</option>
-                  <option value="sale">Sale</option>
+                  <option value="Trade">Trade</option>
+                  <option value="Sale">Sale</option>
                 </select>
               </div>
 

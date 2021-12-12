@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import bookService from "../../services/book.service";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SearchGenre from "../../components/SearchGenre/SearchGenre";
+import BookCard from "../../components/BookCard/BookCard";
 
 function HomePage() {
   const [books, setBooks] = useState([]);
@@ -54,49 +54,9 @@ function HomePage() {
           <SearchBar searchFilter={searchFilter} />
           <SearchGenre filterGenre={filterGenre} />
 
-          <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="row row-cols-2 row-cols-md-5 g-4">
             {books.map((oneBook) => {
-              return (
-                <Link to={`/books/${oneBook._id}`}>
-                  <div className="col">
-                    <div
-                      className="card h-100 mb-3"
-                      style={{ maxWidth: "600px" }}
-                    >
-                      <div className="row g-0">
-                        <div className="col-md-4">
-                          <img
-                            src={oneBook.imageUrl}
-                            className="img-fluid rounded-start"
-                            alt="..."
-                            style={{ width: "15em" }}
-                          />
-                        </div>
-                        <div class="col-md-8">
-                          <div className="card-body">
-                            <ul class="list-group list-group-flush">
-                              <h5 className="card-title">{oneBook.title}</h5>
-                              <li className="list-group-item">
-                                {oneBook.tradeOrSale}
-                              </li>
-                              <li className="list-group-item">
-                                {oneBook.genre}
-                              </li>
-                              {oneBook.price ? (
-                                <li className="list-group-item">
-                                  {oneBook.price}
-                                </li>
-                              ) : (
-                                ""
-                              )}
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
+              return <BookCard key={oneBook._id} oneBook={oneBook} />;
             })}
           </div>
         </div>
