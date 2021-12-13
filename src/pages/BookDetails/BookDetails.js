@@ -2,6 +2,7 @@ import BookService from "../../services/book.service";
 import { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/auth.context";
+import bookService from "../../services/book.service";
 
 function BookDetails() {
   const { user } = useContext(AuthContext);
@@ -29,6 +30,15 @@ function BookDetails() {
     }
   };
 
+  const saveBook = async () => {
+    try {
+      await bookService.saveToFavorites(bookId);
+      navigate("/");
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+    }
+  };
+
   useEffect(() => {
     getBook();
   }, []);
@@ -50,6 +60,7 @@ function BookDetails() {
           <Link to={`/user/${book.userOwner._id}`}>
             {book.userOwner.username}
           </Link>
+          <button onClick={saveBook}>Save to favorites</button>
           {user._id === book.userOwner._id ? (
             <Link to={`/books/edit/${book._id}`}>
               <button>Edit Book</button>

@@ -48,6 +48,11 @@ function ProfilePage() {
                   <button>Update Profile</button>
                 </Link>
               </div>
+              <div>
+                <Link to="/user-profiles/saved">
+                  <button>Saved Books</button>
+                </Link>
+              </div>
             </div>
 
             {/* Second column */}

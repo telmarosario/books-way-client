@@ -13,6 +13,7 @@ import BookDetails from "./pages/BookDetails/BookDetails";
 import OtherUser from "./pages/OtherUser/OtherUser";
 import EditBook from "./pages/EditBook/EditBook";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
+import SavedBooks from "./pages/SavedBooks/SavedBooks";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -73,6 +74,14 @@ function App() {
           element={
             <IsPrivate>
               <EditProfilePage />
+            </IsPrivate>
+          }
+        ></Route>
+        <Route
+          path="/user-profiles/saved"
+          element={
+            <IsPrivate>
+              <SavedBooks />
             </IsPrivate>
           }
         ></Route>
