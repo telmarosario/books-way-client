@@ -77,7 +77,7 @@ function EditProfilePage() {
 
   return (
     <div>
-      <h1>Edit Profile</h1>
+      <h3 className="mt-5 mb-3">Edit your profile</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <div className="container">
@@ -89,13 +89,13 @@ function EditProfilePage() {
                 <label>Username:</label>
                 <input
                   type="text"
-                  className="form-control required"
+                  className="form-control  mb-4 required"
                   required
                   value={username}
                   onChange={handleUsername}
                 />
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>Email: </label>
                   <textarea
                     className="form-control"
@@ -105,7 +105,7 @@ function EditProfilePage() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>What are your favorite book genres? </label>
                   <select
                     name=""
@@ -121,9 +121,13 @@ function EditProfilePage() {
                   </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>Profile Picture: </label>
-                  <input type="file" onChange={handleFileUpload} />
+                  <input
+                    className="form-control"
+                    type="file"
+                    onChange={handleFileUpload}
+                  />
                 </div>
 
                 <button type="submit" className="btn btn-primary">

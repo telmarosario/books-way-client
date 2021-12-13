@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import genres from "../../genres";
+import "./SignupPage.css";
 
 import authService from "../../services/auth.service";
 import fileService from "../../services/fileupload.service";
 
-function SignupPage(props) {
+function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -71,53 +72,91 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
-
+    <div>
       <form onSubmit={handleSignupSubmit}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsername}
-        />
+        <h3 className="mt-5 mb-3">Sign up and start trading</h3>
+        <div className="form-group">
+          <div className="container">
+            <div className="row">
+              {/* Left column */}
+              <div class="col-3"></div>
 
-        <label>Email:</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
+              <div className="col-sm-12 col-md-6">
+                <label>Username:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  value={username}
+                  onChange={handleUsername}
+                  required
+                />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+                <div className="form-group mt-3">
+                  <label>Email:</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={handleEmail}
+                  />
+                </div>
 
-        <label>Profile Picture</label>
-        <input type="file" onChange={handleFileUpload} />
+                <div className="form-group mt-3">
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label>Profile Picture</label>
+                  <input
+                    className="form-control"
+                    type="file"
+                    onChange={handleFileUpload}
+                  />
+                </div>
 
-        <label>What are your favorite book genres?</label>
-        <select
-          name=""
-          value={favoriteGenres}
-          onChange={handleFavoriteGenres}
-          multiple
-        >
-          {genres.map((oneGenre) => {
-            return <option value={oneGenre}>{oneGenre}</option>;
-          })}
-        </select>
+                <div className="form-group d-flex flex-column mt-3">
+                  <label>What are your favorite book genres?</label>
+                  <select
+                    className="form-control"
+                    name=""
+                    value={favoriteGenres}
+                    onChange={handleFavoriteGenres}
+                    multiple
+                  >
+                    {genres.map((oneGenre) => {
+                      return <option value={oneGenre}>{oneGenre}</option>;
+                    })}
+                  </select>
+                </div>
 
-        <button type="submit" disabled={!allowSubmit}>
-          Sign Up
-        </button>
+                <button
+                  className="btn custom-signup-btn mt-4 mb-4"
+                  type="submit"
+                  disabled={!allowSubmit}
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* Right column */}
+          <div className="col-3"></div>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <p className="mb-5">
+        Already have account? <Link to={"/login"}> Login</Link>
+      </p>
     </div>
   );
 }

@@ -36,7 +36,7 @@ function OtherUser() {
       {errorMessage && <p>{errorMessage}</p>}
 
       {otherUser && (
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             {/* First Column */}
             <div className="col-sm-3 col-md-3 d-flex justify-content-end row">
@@ -48,14 +48,15 @@ function OtherUser() {
             </div>
 
             {/* Second column */}
-            <div className="col-sm-8 col-md-7">
-              <p>{otherUser.username}</p>
-              <p>Contact: {otherUser.email}</p>
-              <p>Favorite Book Genres:</p>
+            <div className="col-sm-8 col-md-7 mt-5">
+              <h4 className="custom-user-info-ou">{otherUser.username}</h4>
+              <p className="custom-p-tag-ou">
+                You can contact me via: <b>{otherUser.email}</b>
+              </p>
+              <p className="custom-p-tag-ou">Favorite Book Genres:</p>
               {otherUser.favoriteGenres.map((genre) => {
-                return <button>{genre} </button>;
+                return <button className="button-21-ou">{genre} </button>;
               })}
-              <h4>Books for Sale or Trade:</h4>
             </div>
             {/* Third column */}
             <div class="col-sm-1 col-md-2"></div>
@@ -65,6 +66,7 @@ function OtherUser() {
       <div className="container">
         <div className="row">
           <div className="col-sm-0 col-md-3"></div>
+          <h4 className="mt-5">Books for Sale or Trade:</h4>
           <div className="row row-cols-2 row-cols-md-4 g-4">
             {otherUser &&
               otherUser.booksSaleTrade.map((book) => {

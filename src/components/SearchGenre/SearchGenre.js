@@ -14,7 +14,7 @@ function SearchGenre({ filterGenre }) {
       <select
         value={bookGenre}
         onChange={handleSelect}
-        className="d-flex ms-auto me-auto w-50"
+        className="form-control dropdown w-auto"
       >
         <option value="All"> All genres</option>
         {genres.map((oneGenre) => {

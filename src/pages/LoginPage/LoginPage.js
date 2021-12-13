@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import "./LoginPage.css";
 
 import authService from "../../services/auth.service";
 
-function LoginPage(props) {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  // Get the function for saving and verifying the token
   const { logInUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -34,27 +34,44 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
+    <div>
       <form onSubmit={handleLoginSubmit}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="email"
-          value={username}
-          onChange={handleUsername}
-        />
+        <h3 className="mt-5 mb-3">Login</h3>
+        <div className="form-group">
+          <div className="container">
+            <div className="row">
+              {/* Left column */}
+              <div class="col-3"></div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+              <div className="col-sm-12 col-md-6">
+                <label>Username:</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="email"
+                  value={username}
+                  onChange={handleUsername}
+                />
 
-        <button type="submit">Login</button>
+                <label>Password:</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={password}
+                  onChange={handlePassword}
+                />
+
+                <button
+                  className="btn mt-4 mb-4 custom-login-btn"
+                  type="submit"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

@@ -82,7 +82,7 @@ function EditBook() {
 
   return (
     <div>
-      <h1>Edit Book</h1>
+      <h3 className="mt-5 mb-3">Edit your book</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <div className="container">
@@ -94,14 +94,14 @@ function EditBook() {
                 <label>Title of the Book</label>
                 <input
                   type="text"
-                  className="form-control required"
+                  className="form-control required mb-4"
                   placeholder="Harry Potter and The Chamber Of Secrets"
                   required
                   value={title}
                   onChange={handleTitle}
                 />
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>Condition: </label>
                   <textarea
                     className="form-control"
@@ -112,7 +112,7 @@ function EditBook() {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>This book is for: </label>
                   <select
                     className="form-control"
@@ -125,7 +125,7 @@ function EditBook() {
                 </div>
 
                 {isOnSale && (
-                  <div className="form-group">
+                  <div className="form-group mb-4">
                     <label>Price</label>
                     <input
                       type="number"
@@ -136,7 +136,7 @@ function EditBook() {
                   </div>
                 )}
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>What is this book about?</label>
                   <select
                     name=""
@@ -151,9 +151,13 @@ function EditBook() {
                   </select>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>Picture of your book</label>
-                  <input type="file" onChange={handleFileUpload} />
+                  <input
+                    className="form-control"
+                    type="file"
+                    onChange={handleFileUpload}
+                  />
                 </div>
 
                 <button type="submit" className="btn btn-primary">

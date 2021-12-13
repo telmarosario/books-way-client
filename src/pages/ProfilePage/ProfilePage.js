@@ -31,7 +31,7 @@ function ProfilePage() {
       {errorMessage && <p>{errorMessage}</p>}
 
       {userInfo && (
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             {/* First Column */}
             <div className="col-sm-3 col-md-3 d-flex justify-content-end row">
@@ -41,29 +41,32 @@ function ProfilePage() {
                 className="custom-pfp"
               />
               <div>
-                <button onClick={logOutUser}>Logout</button>
+                <button onClick={logOutUser} className="button-33 mt-3">
+                  Logout
+                </button>
               </div>
               <div>
                 <Link to="/user-profile/edit">
-                  <button>Update Profile</button>
+                  <button className="button-33">Update Profile</button>
                 </Link>
               </div>
               <div>
                 <Link to="/user-profiles/saved">
-                  <button>Saved Books</button>
+                  <button className="button-33">Saved Books</button>
                 </Link>
               </div>
             </div>
 
             {/* Second column */}
-            <div className="col-sm-8 col-md-7">
-              <p>{userInfo.username}</p>
-              <p>Contact: {userInfo.email}</p>
-              <p>Favorite Book Genres:</p>
+            <div className="col-sm-8 col-md-7 mt-5">
+              <h4 className="custom-user-info">{userInfo.username}</h4>
+              <p className="custom-p-tag ">
+                You can contact me via: <b>{userInfo.email}</b>
+              </p>
+              <p className="custom-p-tag "> Favorite Book Genres:</p>
               {userInfo.favoriteGenres.map((genre) => {
-                return <button>{genre} </button>;
+                return <button className="button-21">{genre} </button>;
               })}
-              <h4>Books for Sale or Trade:</h4>
             </div>
             {/* Third column */}
             <div class="col-sm-1 col-md-2"></div>
@@ -73,7 +76,8 @@ function ProfilePage() {
       <div className="container">
         <div className="row">
           <div className="col-sm-0 col-md-3"></div>
-          <div className="row row-cols-2 row-cols-md-4 g-4">
+          <h4>Books for Sale or Trade:</h4>
+          <div className="row row-cols-2 row-cols-md-4 g-4 mb-5">
             {userInfo &&
               userInfo.booksSaleTrade.map((book) => {
                 return <BookCard key={book._id} oneBook={book} />;

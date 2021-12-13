@@ -10,7 +10,7 @@ function SearchBar({ searchFilter }) {
 
   return (
     <input
-      class="d-flex ms-auto me-auto w-50"
+      class="form-control w-50 me-4"
       type="text"
       placeholder="Search for a book"
       onChange={handleSearchInput}

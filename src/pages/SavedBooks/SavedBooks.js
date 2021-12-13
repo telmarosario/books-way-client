@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import userService from "../../services/user.service";
 import { useEffect, useState } from "react";
 import BookCard from "../../components/BookCard/BookCard";
@@ -17,7 +18,9 @@ function SavedBooks() {
 
   return (
     <div>
-      <h1>My saved books</h1>
+      <h3 className="mt-5" style={{ color: "black" }}>
+        Your saved books
+      </h3>
       <div className="container">
         <div className="row">
           <div className="col-sm-0 col-md-3"></div>

@@ -14,6 +14,7 @@ import OtherUser from "./pages/OtherUser/OtherUser";
 import EditBook from "./pages/EditBook/EditBook";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import SavedBooks from "./pages/SavedBooks/SavedBooks";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -101,6 +102,7 @@ function App() {
             </IsAnon>
           }
         />
+        <Route path="/aboutus" element={<AboutUs />}></Route>
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>

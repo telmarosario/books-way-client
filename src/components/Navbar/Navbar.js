@@ -17,7 +17,7 @@ function Navbar() {
             alt=""
             width="80"
             height="80"
-            class="d-inline-block align-text-top"
+            class="d-inline-block align-text-center"
           />
           <span>BooksWay</span>
         </Link>
@@ -32,26 +32,37 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNavAltMarkup"
+        >
           <div className="navbar-nav">
+            <Link to="/aboutus" className="nav-link custom-link">
+              <p>About Us</p>
+            </Link>
             {isLoggedIn && (
-              <Link to="/books/add-book" className="nav-link">
-                Add Book
+              <Link to="/books/add-book" className="nav-link custom-link">
+                <p>Add Book</p>
               </Link>
             )}
             {!isLoggedIn && (
               <>
-                <Link to="/signup" className="nav-link">
-                  Sign up
+                <Link to="/signup" className="nav-link custom-link">
+                  <p>Sign up</p>
                 </Link>
 
-                <Link to="/login" className="nav-link">
-                  Login
+                <Link to="/login" className="nav-link custom-link">
+                  <p>Login</p>
                 </Link>
               </>
             )}
-            <div className="profile-img-wrapper">
-              {user && <Link to="/profile">My Profile</Link>}
+            <div>
+              {user && (
+                <Link to="/profile" className="nav-link custom-link">
+                  {" "}
+                  <p>My Profile</p>
+                </Link>
+              )}
             </div>
           </div>
         </div>

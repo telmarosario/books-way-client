@@ -67,8 +67,8 @@ function AddBook() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Add Book</h1>
-      <div className="form-group">
+      <h3 className="mt-5 mb-3">Add Book</h3>
+      <div className="form-group mb-4">
         <div className="container">
           <div className="row">
             {/* Left column */}
@@ -78,14 +78,14 @@ function AddBook() {
               <label>Title of the Book</label>
               <input
                 type="text"
-                className="form-control required"
+                className="form-control mb-4"
                 placeholder="Harry Potter and The Chamber Of Secrets"
                 required
                 value={title}
                 onChange={handleTitle}
               />
 
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label>Condition: </label>
                 <textarea
                   className="form-control"
@@ -96,7 +96,7 @@ function AddBook() {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label>This book is for: </label>
                 <select
                   className="form-control"
@@ -109,7 +109,7 @@ function AddBook() {
               </div>
 
               {isOnSale && (
-                <div className="form-group">
+                <div className="form-group mb-4">
                   <label>Price</label>
                   <input
                     type="number"
@@ -120,7 +120,7 @@ function AddBook() {
                 </div>
               )}
 
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label>What is this book about?</label>
                 <select
                   name=""
@@ -135,9 +135,13 @@ function AddBook() {
                 </select>
               </div>
 
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label>Picture of your book</label>
-                <input type="file" onChange={handleFileUpload} />
+                <input
+                  className="form-control"
+                  type="file"
+                  onChange={handleFileUpload}
+                />
               </div>
 
               <button

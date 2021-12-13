@@ -4,6 +4,7 @@ import bookService from "../../services/book.service";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import SearchGenre from "../../components/SearchGenre/SearchGenre";
 import BookCard from "../../components/BookCard/BookCard";
+import "./HomePage.css";
 
 function HomePage() {
   const [books, setBooks] = useState([]);
@@ -51,9 +52,10 @@ function HomePage() {
         <div class="col-sm-10 col-md-12">
           {errorMessage && <p>{errorMessage}</p>}
 
-          <SearchBar searchFilter={searchFilter} />
-          <SearchGenre filterGenre={filterGenre} />
-
+          <div className="d-flex justify-content-center mt-5 mb-5">
+            <SearchBar searchFilter={searchFilter} />
+            <SearchGenre filterGenre={filterGenre} />
+          </div>
           <div className="row row-cols-2 row-cols-md-5 g-4">
             {books.map((oneBook) => {
               return <BookCard key={oneBook._id} oneBook={oneBook} />;
