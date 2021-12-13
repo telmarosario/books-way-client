@@ -35,7 +35,7 @@ class BookService {
     return this.api.put(`/api/books/${bookId}`, requestBody);
   };
 
-  deleteProject = async (bookId) => {
+  deleteBook = async (bookId) => {
     return this.api.delete(`/api/books/${bookId}`);
   };
 

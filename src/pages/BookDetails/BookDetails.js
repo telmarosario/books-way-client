@@ -1,6 +1,6 @@
 import BookService from "../../services/book.service";
 import { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/auth.context";
 
 function BookDetails() {
@@ -9,11 +9,21 @@ function BookDetails() {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const { bookId } = useParams();
+  const navigate = useNavigate();
 
   const getBook = async () => {
     try {
       const response = await BookService.getOneBook(bookId);
       setBook(response.data);
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+    }
+  };
+
+  const deleteBook = async () => {
+    try {
+      await BookService.deleteBook(bookId);
+      navigate("/");
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }
@@ -42,8 +52,13 @@ function BookDetails() {
           </Link>
           {user._id === book.userOwner._id ? (
             <Link to={`/books/edit/${book._id}`}>
-              <button>Edit</button>
+              <button>Edit Book</button>
             </Link>
+          ) : (
+            ""
+          )}
+          {user._id === book.userOwner._id ? (
+            <button onClick={deleteBook}>Delete Book</button>
           ) : (
             ""
           )}
