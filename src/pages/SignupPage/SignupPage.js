@@ -43,7 +43,6 @@ function SignupPage(props) {
         value.push(options[i].value);
       }
     }
-    console.log(value);
     setFavoriteGenres(value);
   };
 

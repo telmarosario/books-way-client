@@ -12,6 +12,7 @@ import AddBook from "./pages/AddBook/AddBook";
 import BookDetails from "./pages/BookDetails/BookDetails";
 import OtherUser from "./pages/OtherUser/OtherUser";
 import EditBook from "./pages/EditBook/EditBook";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -64,6 +65,14 @@ function App() {
           element={
             <IsPrivate>
               <EditBook />
+            </IsPrivate>
+          }
+        ></Route>
+        <Route
+          path="/user-profile/edit"
+          element={
+            <IsPrivate>
+              <EditProfilePage />
             </IsPrivate>
           }
         ></Route>

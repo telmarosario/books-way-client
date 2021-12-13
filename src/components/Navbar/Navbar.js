@@ -51,15 +51,7 @@ function Navbar() {
               </>
             )}
             <div className="profile-img-wrapper">
-              {user && (
-                <Link to="/profile">
-                  <img
-                    className="profile-img"
-                    src={user.imageUrl}
-                    alt="profile"
-                  />
-                </Link>
-              )}
+              {user && <Link to="/profile">My Profile</Link>}
             </div>
           </div>
         </div>
