@@ -16,6 +16,7 @@ import EditBook from "./pages/EditBook/EditBook";
 import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 import SavedBooks from "./pages/SavedBooks/SavedBooks";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import Messenger from "./pages/Messenger/Messenger";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -84,6 +85,14 @@ function App() {
           element={
             <IsPrivate>
               <SavedBooks />
+            </IsPrivate>
+          }
+        ></Route>
+        <Route
+          path="/chat"
+          element={
+            <IsPrivate>
+              <Messenger />
             </IsPrivate>
           }
         ></Route>
