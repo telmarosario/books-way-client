@@ -1,18 +1,16 @@
-import { Link } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="bg-light text-center text-lg-start">
-      <div
-        className="text-center p-3"
-        style={{ backgroundcColor: "rgba(0, 0, 0, 0.9)" }}
-      >
-        This app was developed @Ironhack by Telma Rosário
+    <footer className="bg-light text-center text-lg-start mt-5">
+      <div className="text-center p-3 custom-footer">
+        This app was developed @Ironhack by <b>Telma Rosário</b>
         <br />
         <a
           href="https://github.com/telmarosario/books-way-client"
           target="_blank"
           rel="noreferrer"
+          className="custom-footer-a"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
