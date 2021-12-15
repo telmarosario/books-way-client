@@ -1,14 +1,14 @@
 import "./Message.css";
 
-function Message({ own }) {
+//* See library for formating dates
+
+function Message({ message, own }) {
   return (
     <div className={own ? "message own" : "message"}>
       <div className="message-top">
-        <p className="message-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-        </p>
+        <p className="message-text">{message.text}</p>
       </div>
-      <div className="message-bottom">1 hour ago</div>
+      <div className="message-bottom">{message.createdAt}</div>
     </div>
   );
 }
