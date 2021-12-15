@@ -45,6 +45,11 @@ function Navbar() {
                 <p>Add Book</p>
               </Link>
             )}
+            {isLoggedIn && (
+              <Link to="/chat" className="nav-link custom-link">
+                <p>Messages</p>
+              </Link>
+            )}
             {!isLoggedIn && (
               <>
                 <Link to="/signup" className="nav-link custom-link">

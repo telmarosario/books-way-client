@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import userService from "../../services/user.service";
+import chatService from "../../services/chat.service";
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../context/auth.context";
@@ -31,6 +32,19 @@ function OtherUser() {
     getOtherUser();
   }, []);
 
+  const createConversation = async () => {
+    try {
+      const conversationinfo = {
+        senderId: user._id,
+        receiverId: otherUser._id,
+      };
+      await chatService.createConversation(conversationinfo);
+      navigate("/chat");
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+    }
+  };
+
   return (
     <div>
       {errorMessage && <p>{errorMessage}</p>}
@@ -50,6 +64,9 @@ function OtherUser() {
             {/* Second column */}
             <div className="col-sm-8 col-md-7 mt-5">
               <h4 className="custom-user-info-ou">{otherUser.username}</h4>
+              <button className="button-21-ou" onClick={createConversation}>
+                Message
+              </button>
               <p className="custom-p-tag-ou">
                 You can contact me via: <b>{otherUser.email}</b>
               </p>

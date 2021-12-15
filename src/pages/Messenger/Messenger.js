@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Message from "./../../components/Message/Message";
 import Conversation from "../../components/Conversation/Conversation";
 import "./Messenger.css";
